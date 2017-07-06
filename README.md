@@ -1,4 +1,4 @@
-# Pathfinder
+# About This Repository
 This repo is the beginning of a simple web presence to share news, learnings, and resources that come out of "Pathfinder" projects at the Government of British Columbia.  
 
 Pathfinder projects are testbeds for government to explore the potential of emerging technology solutions, and to be ready to capture the benefits. They deliver business value through a “learn by doing” process, matching known business problems with these emerging technologies. What is learned is shared, so other projects have a path to follow. To facilitate speed and innovation, Pathfinder projects are provided greater latitude when adhering to existing standards with the understanding that the learning gathered will inform any necessary standards/revisions going forward. 
@@ -6,8 +6,8 @@ Pathfinder projects are testbeds for government to explore the potential of emer
 ## Design
 The site is based on the B.C. Government [Gov-2.0-Bootstrap-Skeleton](https://github.com/bcgov/Gov-2.0-Bootstrap-Skeleton).
 
-## Contributing
-We welcome contributions! Please see our contributing guidelines and code of conduct.
+## How to Contribute
+We welcome contributions! Please see our [contributing guidelines](https://github.com/mark-a-wilson/pathfinder/blob/master/CONTRIBUTING.md) and [code of conduct](https://github.com/mark-a-wilson/pathfinder/blob/master/CODE_OF_CONDUCT.md). By participating in this project, you are agreeing to abide by these guidelines.
 
 ## License
 
