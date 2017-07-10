@@ -1,0 +1,111 @@
+{
+    "kind": "List",
+    "apiVersion": "v1",
+    "metadata": {},
+    "items": [
+        {
+            "kind": "DeploymentConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "pathfinder",
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "pathfinder"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {
+                "strategy": {
+                    "resources": {}
+                },
+                "triggers": [
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "type": "ImageChange",
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "pathfinder"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "namespace": "ocio-pathfinder-tools",
+                                "name": "pathfinder:latest"
+                            }
+                        }
+                    }
+                ],
+                "replicas": 1,
+                "test": false,
+                "selector": {
+                    "app": "pathfinder",
+                    "deploymentconfig": "pathfinder"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "pathfinder",
+                            "deploymentconfig": "pathfinder"
+                        },
+                        "annotations": {
+                            "openshift.io/container.pathfinder.image.entrypoint": "[\"/sbin/tini\",\"caddy\",\"-quic\",\"--conf\",\"/etc/Caddyfile\"]",
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "pathfinder",
+                                "image": "172.50.0.2:5000/ocio-pathfinder-tools/pathfinder:latest",
+                                "ports": [
+                                    {
+                                        "containerPort": 2015,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {}
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {}
+        },
+        {
+            "kind": "Service",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "pathfinder",
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "pathfinder"
+                },
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                }
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "2015-tcp",
+                        "protocol": "TCP",
+                        "port": 2015,
+                        "targetPort": 2015
+                    }
+                ],
+                "selector": {
+                    "app": "pathfinder",
+                    "deploymentconfig": "pathfinder"
+                }
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        }
+    ]
+}
