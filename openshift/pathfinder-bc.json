@@ -59,7 +59,7 @@
                 "source": {
                     "type": "Git",
                     "git": {
-                        "uri": "https://github.com/bcgov/pathfinder.git"
+                        "uri": "https://github.com/bcdevops/pathfinder.git"
                     }
                 },
                 "strategy": {
