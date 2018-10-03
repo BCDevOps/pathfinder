@@ -1,0 +1,16 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "linkExtractor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "got": "^9.2.2",
+    "yamljs": "^0.3.0"
+  }
+}

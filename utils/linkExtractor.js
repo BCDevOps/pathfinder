@@ -1,53 +1,58 @@
-const got = require('got')
-const cheerio = require('cheerio')
-const YAML = require('yamljs')
+const got = require('got');
+const cheerio = require('cheerio');
+const YAML = require('yamljs');
 
 async function extract(url) {
-    let currentEntries = []
+    let currentEntries = [];
 
-    got(url).then(response => {
-        // console.log('========' + url + '========')
+    try {
+        let response = await got(url);
 
-        let body = response.body
-        const $ = cheerio.load(body)
+        let body = response.body;
+        const $ = cheerio.load(body);
 
-        $('.well h2').each(function(index) {
-        let sectionTitle = $(this).text().trim()
-        // console.log("=======" + sectionTitle + "=========")
+        // each .well is a logical section
+        $('.well h2').each(function (index) {
+            let sectionTitle = $(this).text().trim();
 
-        $(this).siblings().find('ul li > a').each(function(index) {
-            let link = $(this).attr('href')
-            let linkText = $(this).text()
+            $(this).siblings().find('ul li > a').each(function (index) {
+                let link = $(this).attr('href');
+                let linkText = $(this).text();
 
-            // console.log(link + " " + linkText)
+                let linkEntry = {
+                    "originalSource": url,
+                    "category": sectionTitle,
+                    "link": link,
+                    "description": linkText
+                };
 
-            let linkEntry = {
-                "originalSource": url,
-                "category": sectionTitle,
-                "link": link,
-                "description": linkText
-            }
+                currentEntries.push(linkEntry)
+            });
+        });
 
-            currentEntries.push(linkEntry)
-        })
-    })
-    console.log(currentEntries)
+        return currentEntries;
 
-    return currentEntries
+    } catch(err) {
+        console.log("Gah! (" + err + ")");
+        throw err;
+    }
 
-}).catch(error => {
-        console.log(error.response.body)
-})
 }
 
+const main = async () => {
 
-let linkBlob = {}
-let entries = []
-linkBlob.entries = entries
+    //collect links from each of the pages in turn
+    let items = await extract('https://www.pathfinder.gov.bc.ca/');
+    items = items.concat(await extract('https://www.pathfinder.gov.bc.ca/_pages/openshift_resources.html'));
+    items = items.concat(await extract('https://www.pathfinder.gov.bc.ca/_pages/bcgov_org_github.html'));
 
-entries.concat(extract('https://www.pathfinder.gov.bc.ca/'))
-entries.concat(extract('https://www.pathfinder.gov.bc.ca/_pages/openshift_resources.html'))
-entries.concat(extract('https://github.com/BCDevOps/pathfinder/blob/master/_pages/bcgov_org_github.html'))
-entries.concat(extract('https://github.com/BCDevOps/pathfinder/blob/master/_pages/critical_systems_faq.html'))
+    //provide a wrapper object for them
+    let linkBlob = {
+        entries : items
+    };
 
-console.log(YAML.stringify(linkBlob))
+    //export to YAML and write to stdout
+    console.log(YAML.stringify(linkBlob));
+};
+
+main();
