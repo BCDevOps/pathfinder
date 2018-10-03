@@ -1,15 +1,15 @@
-const got = require('got');
 const cheerio = require('cheerio');
 const YAML = require('yamljs');
+const fs = require('nano-fs');
 
-async function extract(url) {
+async function extract(path) {
     let currentEntries = [];
 
     try {
-        let response = await got(url);
 
-        let body = response.body;
-        const $ = cheerio.load(body);
+        let pageContent = await fs.readFile(path, 'utf8');
+
+        const $ = cheerio.load(pageContent);
 
         // each .well is a logical section
         $('.well h2').each(function (index) {
@@ -20,7 +20,7 @@ async function extract(url) {
                 let linkText = $(this).text();
 
                 let linkEntry = {
-                    "originalSource": url,
+                    "originalSource": path,
                     "category": sectionTitle,
                     "link": link,
                     "description": linkText
@@ -42,9 +42,9 @@ async function extract(url) {
 const main = async () => {
 
     //collect links from each of the pages in turn
-    let items = await extract('https://www.pathfinder.gov.bc.ca/');
-    items = items.concat(await extract('https://www.pathfinder.gov.bc.ca/_pages/openshift_resources.html'));
-    items = items.concat(await extract('https://www.pathfinder.gov.bc.ca/_pages/bcgov_org_github.html'));
+    let items = await extract('../index.html');
+    items = items.concat(await extract('../_pages/openshift_resources.html'));
+    items = items.concat(await extract('../_pages/bcgov_org_github.html'));
 
     //provide a wrapper object for them
     let linkBlob = {
