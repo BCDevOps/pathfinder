@@ -50,14 +50,15 @@ const filterItemsByLinks = async (items) => {
             try {
                 // is item a absolute path via http
                 if(/^https?/.test(item.link)) {
-                    //fetch resource for its status code
+                    // fetch resource for its status code
                     const res = await fetch(item.link);
+                    // if resource not found return undefined
                     return res.status == 200 ? item : undefined;
                 } else {
                     return item;
                 }
             } catch(e) {
-                console.error('mapped,', e);
+                // if unable to fetch return undefined
                 return undefined;
             }
         });
@@ -73,10 +74,8 @@ const main = async () => {
     let items = await extract('../index.html');
     items = items.concat(await extract('../_pages/openshift_resources.html'));
     items = items.concat(await extract('../_pages/bcgov_org_github.html'));
-    console.error('Original length ', items.length);
     // ensure item links work by filtering them
     items = await filterItemsByLinks(items);
-    console.error('Filtered length ', items.length);
     //provide a wrapper object for them
     let linkBlob = {
         entries: items
