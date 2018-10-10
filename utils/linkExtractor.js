@@ -1,6 +1,9 @@
 const cheerio = require('cheerio');
 const YAML = require('yamljs');
 const fs = require('nano-fs');
+const request = require('request');
+const filter = require('awaity/filter');
+const { map, reduce, sum } = require('awaity/esm');
 
 async function extract(path) {
     let currentEntries = [];
@@ -38,6 +41,24 @@ async function extract(path) {
     }
 
 }
+/**
+ * filters items by checking if links work or not
+ */
+const filterItemsByLinks = async (items) => {
+    try {
+        const itemsFiltered = await map(items, async (item) => {
+            try {
+                await request(item.link);
+                return item;
+            } catch(e) {
+                return undefined;
+            }
+        });
+        return itemsFiltered.filter(item => (item !== undefined));
+    } catch(e) {
+        console.error("Gah! (" + e + ")");
+    }
+}
 
 const main = async () => {
 
@@ -45,10 +66,13 @@ const main = async () => {
     let items = await extract('../index.html');
     items = items.concat(await extract('../_pages/openshift_resources.html'));
     items = items.concat(await extract('../_pages/bcgov_org_github.html'));
-
+    console.error('Original length ', items.length);
+    // ensure item links work by filtering them
+    items = await filterItemsByLinks(items);
+    console.error('Filtered length ', items.length);
     //provide a wrapper object for them
     let linkBlob = {
-        entries : items
+        entries: items
     };
 
     //export to YAML and write to stdout

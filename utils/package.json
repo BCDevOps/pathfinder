@@ -12,5 +12,9 @@
     "cheerio": "^1.0.0-rc.2",
     "nano-fs": "^1.2.5",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "awaity": "^1.0.0",
+    "request": "^2.88.0"
   }
 }
