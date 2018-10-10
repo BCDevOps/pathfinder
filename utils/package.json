@@ -11,6 +11,10 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "nano-fs": "^1.2.5",
+    "node-fetch": "^2.2.0",
     "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "awaity": "^1.0.0"
   }
 }

@@ -1,6 +1,9 @@
 const cheerio = require('cheerio');
 const YAML = require('yamljs');
 const fs = require('nano-fs');
+const fetch = require('node-fetch');
+const filter = require('awaity/filter');
+const { map, reduce, sum } = require('awaity/esm');
 
 async function extract(path) {
     let currentEntries = [];
@@ -38,6 +41,32 @@ async function extract(path) {
     }
 
 }
+/**
+ * filters items by checking if links work or not
+ */
+const filterItemsByLinks = async (items) => {
+    try {
+        const itemsFiltered = await map(items, async (item) => {
+            try {
+                // is item a absolute path via http
+                if(/^https?/.test(item.link)) {
+                    // fetch resource for its status code
+                    const res = await fetch(item.link);
+                    // if resource not found return undefined
+                    return res.status == 200 ? item : undefined;
+                } else {
+                    return item;
+                }
+            } catch(e) {
+                // if unable to fetch return undefined
+                return undefined;
+            }
+        });
+        return itemsFiltered.filter(item => (item !== undefined));
+    } catch(e) {
+        console.error("Gah! (" + e + ")");
+    }
+}
 
 const main = async () => {
 
@@ -45,10 +74,11 @@ const main = async () => {
     let items = await extract('../index.html');
     items = items.concat(await extract('../_pages/openshift_resources.html'));
     items = items.concat(await extract('../_pages/bcgov_org_github.html'));
-
+    // ensure item links work by filtering them
+    items = await filterItemsByLinks(items);
     //provide a wrapper object for them
     let linkBlob = {
-        entries : items
+        entries: items
     };
 
     //export to YAML and write to stdout
