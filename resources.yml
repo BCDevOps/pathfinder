@@ -1,18 +1,19 @@
 entries:
     - {originalSource: ../index.html, category: 'What''s Going On Now', link: 'https://github.com/BCDevOps/BCDevOps-Guide', description: 'DevOps PaaS'}
-    - {originalSource: ../index.html, category: 'What''s Going On Now', link: "https://gccollab.ca/groups/profile/6910/pan-canadian-trust-framework)\nhttps://diacc.ca/", description: 'Block Chain/ Distributed Ledger'}
-    - {originalSource: ../index.html, category: 'What''s Going On Now', link: 'http://bcic.ca/events/iot-discovery-day/', description: 'Internet of Things'}
     - {originalSource: ../index.html, category: Community, link: 'https://www.yammer.com/gov.bc.ca/#/threads/inGroup?type=in_group&feedId=11241672&view=all', description: 'DevOps Commons'}
     - {originalSource: ../index.html, category: Community, link: 'https://www.meetup.com/DevOps-Commons', description: 'DevOps Commons Meetups'}
     - {originalSource: ../index.html, category: Community, link: 'https://trello.com/b/9p3btyUL/product-managers-commons', description: 'Product Managers’ Commons'}
+    - {originalSource: ../index.html, category: Community, link: _pages/chat_conventions.md, description: 'Chat Conventions'}
     - {originalSource: ../index.html, category: Community, link: 'https://www.yammer.com/gov.bc.ca/#/threads/inGroup?type=in_group&feedId=11241672&view=all', description: Events}
     - {originalSource: ../index.html, category: 'Cool Stuff', link: 'https://12factor.net', description: '12 factor Application'}
     - {originalSource: ../index.html, category: 'Cool Stuff', link: 'https://github.com/bcgov', description: '   github.com/bcgov'}
     - {originalSource: ../index.html, category: 'Cool Stuff', link: 'https://bcdevexchange.org', description: bcdevexchange.org}
+    - {originalSource: ../index.html, category: 'Cool Stuff', link: _pages/bcgov_org_github.html, description: 'GitHub Resources'}
+    - {originalSource: ../index.html, category: 'Cool Stuff', link: _pages/openshift_resources.html, description: 'OpenShift Resources'}
+    - {originalSource: ../index.html, category: 'Critical Systems Standard Resources', link: documents/CSSFAQv0.2.pdf, description: 'Critical Systems FAQ'}
     - {originalSource: ../index.html, category: 'Critical Systems Standard Resources', link: 'https://www2.gov.bc.ca/assets/gov/government/services-for-government-and-broader-public-sector/information-technology-services/standards-files/critical_systems_standard_v2_01.pdf', description: 'Critical Systems Standard v2.01'}
     - {originalSource: ../index.html, category: 'Critical Systems Standard Resources', link: 'http://www2.gov.bc.ca/assets/gov/government/services-for-government-and-broader-public-sector/information-technology-services/standards-files/critical_systems_guidelines_v15_feb_14_2017.pdf', description: 'Critical Systems Guidelines v1.5'}
-    - {originalSource: ../index.html, category: 'Critical Systems Standard Resources', link: 'https://sharecio.gov.bc.ca/asb/CriticalSystems/Shared%20Documents/0_Templates/Critical%20Systems%20Standard_STRA%20SubSection%20v1.00.docx', description: 'Critical Systems Compliance Checklist'}
-    - {originalSource: ../index.html, category: 'Critical Systems Standard Resources', link: 'https://sharecio.gov.bc.ca/asb/CriticalSystems/Shared%20Documents/0_Templates/Critical%20Systems%20Standard_STRA%20SubSection%20v1.00.docx', description: ""}
+    - {originalSource: ../index.html, category: 'Critical Systems Standard Resources', link: documents/CriticalSystemsProgramContacts.pdf, description: 'Critical Systems Program Contacts'}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://www.openshift.com/promotions/for-developers.html', description: 'OpenShift for Developers'}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://www.openshift.com/promotions/devops-with-openshift.html', description: 'DevOps with OpenShift'}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://assets.openshift.com/hubfs/pdfs/Deploying_to_OpenShift.pdf', description: 'Deploying to OpenShift'}
@@ -21,6 +22,9 @@ entries:
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://www.openshift.com/promotions/microservices.html', description: 'Microservices vs. Service-Oriented Architecture'}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://developers.redhat.com/promotions/migrating-to-microservice-databases/', description: 'Migrating to Microservice Databases: From Relational Monolith to Distributed Data'}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://docs.openshift.com/container-platform/3.9/cli_reference/get_started_cli.html', description: 'Get Started with the OpenShift CLI (oc)'}
+    - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: ../documents/oc-3.9.25-windows.zip, description: 'Download OC CLI Windows '}
+    - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: ../documents/oc-3.9.25-linux.tar.gz, description: 'Download OC CLI Linux '}
+    - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: ../documents/oc-3.9.25-macosx.tar.gz, description: 'Download OC CLI Mac '}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://docs.openshift.com/container-platform/3.9/dev_guide/index.html', description: 'OpenShift Developer Guide'}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://pathfinder-faq-ocio-pathfinder-prod.pathfinder.gov.bc.ca/OCP/RequestNewProject.html', description: 'Requesting a project '}
     - {originalSource: ../_pages/openshift_resources.html, category: 'OpenShift Resources/eBooks (free)', link: 'https://pathfinder-faq-ocio-pathfinder-prod.pathfinder.gov.bc.ca/OCP/RequestUserAccess.html', description: 'Requesting User Access to Openshift '}

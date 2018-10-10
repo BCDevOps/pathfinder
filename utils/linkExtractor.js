@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const YAML = require('yamljs');
 const fs = require('nano-fs');
-const request = require('request');
+const fetch = require('node-fetch');
 const filter = require('awaity/filter');
 const { map, reduce, sum } = require('awaity/esm');
 
@@ -48,9 +48,16 @@ const filterItemsByLinks = async (items) => {
     try {
         const itemsFiltered = await map(items, async (item) => {
             try {
-                await request(item.link);
-                return item;
+                // is item a absolute path via http
+                if(/^https?/.test(item.link)) {
+                    //fetch resource for its status code
+                    const res = await fetch(item.link);
+                    return res.status == 200 ? item : undefined;
+                } else {
+                    return item;
+                }
             } catch(e) {
+                console.error('mapped,', e);
                 return undefined;
             }
         });
