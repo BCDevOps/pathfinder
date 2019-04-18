@@ -112,6 +112,38 @@
 
                     <hr>
 
+                    <!-- Button trigger modal -->
+                    <!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
+                        <!--Launch demo modal-->
+                    <!--</button>-->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title lead" id="myModalLabel"><span style="color: #FCBA19">Notice!</span> This site is going away soon.</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="lead">
+                                        <p>Hello and thanks for stopping by.</p>
+                                    
+                                        <p>This site and the content on it will soon be superseded by <a href="https://developer.gov.bc.ca">DevHub</a>.  For the time being, feel free to continue to use this site, but the web address will soon redirect to DevHub.  You may also note content on this site has become outdated.  Please reference DevHub for the latest materials.</p>
+                                        
+                                        <p>Thanks!</p>
+                                    
+                                    <p>-- The DevHub Team</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-success" href="https://developer.gov.bc.ca">Go to DevHub Instead!</a>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Continue on this Site</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -220,6 +252,17 @@ https://diacc.ca/" target="_blank">Block Chain/ Distributed Ledger</a></li>
         </div>
     </div>
 <!-- /FOOTER -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#myModal').modal('show');
+    });
+</script>
+
 
 </body>
 
