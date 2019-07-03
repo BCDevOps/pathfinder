@@ -4,7 +4,9 @@
   "description": "",
   "main": "linkExtractor.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -12,9 +14,11 @@
     "cheerio": "^1.0.0-rc.2",
     "nano-fs": "^1.2.5",
     "node-fetch": "^2.2.0",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "awaity": "^1.0.0"
-  }
+  },
+  "snyk": true
 }
